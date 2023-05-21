@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>nikke slot machine</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+    }
+    .slot-container {
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+      font-size: 48px;
+      border: 1px solid;
+      width: 800px;
+    }
+    .slot {
+      margin: 0 10px;
+    }
+    .cont {
+      width: 1400px;
+      margin: auto;
+      position: relative;
+    }
+    .bunny {
+      opacity: 0.3;
+    }
+    #blanc{
+      position: absolute;
+      width: 360px;
+      height: 504px;
+      left: 0px;
+    }
+    #noir{
+      position: absolute;
+      width: 300px;
+      height: 504px;
+      left: 1070px;
+    }
+
+  </style>
+</head>
+<body align="center">
+  <h1><블랑과 누아르가 함께하는 행운의 슬롯머신></h1>
+    <div class="cont">
+      <div class="bunny">
+        <img id="blanc" src="c270_00.png">
+        <img id="noir" src="c271_00.png">   
+      </div>
+
+      <div class="slot-container">
+        <div class="slot" id="slot1"></div><button id="stop1">Stop</button><br>
+        <div class="slot" id="slot2"></div><button id="stop2">Stop</button><br>
+        <div class="slot" id="slot3"></div><button id="stop3">Stop</button><br>
+      </div>
+    </div>
+
+
+    <button onclick="startSlotMachine()">Start</button>
+
+    <script>
+      function getRandomNumber() {
+        return Math.floor(Math.random() * 10) + 1;
+      }
+
+      function startSlotMachine() {
+        var slot1 = document.getElementById('slot1');
+        var slot2 = document.getElementById('slot2');
+        var slot3 = document.getElementById('slot3');
+
+        var count = 0;
+    var maxCount = 10; // 몇 번 돌릴지 설정
+    var intervalIds = []; // 각 슬롯의 setInterval ID를 저장하는 배열
+
+    // 슬롯 멈춤 상태를 나타내는 변수들
+    var slot1Stopped = false;
+    var slot2Stopped = false;
+    var slot3Stopped = false;
+
+    // 각 슬롯을 돌리는 함수
+    function spinSlot(slot, stoppedFlag) {
+      if (!stoppedFlag) {
+        slot.textContent = getRandomNumber();
+      }
+    }
+
+    // 각 슬롯별로 돌리기 시작
+    intervalIds[0] = setInterval(function() {
+      spinSlot(slot1, slot1Stopped);
+    }, 50);
+    intervalIds[1] = setInterval(function() {
+      spinSlot(slot2, slot2Stopped);
+    }, 50);
+    intervalIds[2] = setInterval(function() {
+      spinSlot(slot3, slot3Stopped);
+    }, 50);
+
+    // 슬롯을 멈추는 함수
+    function stopSlot(slotIndex) {
+      clearInterval(intervalIds[slotIndex]);
+
+      // 해당 슬롯을 멈춤 상태로 표시
+      if (slotIndex === 0) {
+        slot1Stopped = true;
+      } else if (slotIndex === 1) {
+        slot2Stopped = true;
+      } else if (slotIndex === 2) {
+        slot3Stopped = true;
+      }
+
+      checkResult();
+    }
+
+    // 슬롯 멈추기 버튼을 클릭하면 해당 슬롯을 멈춤
+    document.getElementById('stop1').onclick = function() {
+      stopSlot(0);
+    };
+    document.getElementById('stop2').onclick = function() {
+      stopSlot(1);
+    };
+    document.getElementById('stop3').onclick = function() {
+      stopSlot(2);
+    };
+
+    // 결과를 확인하는 함수
+    function checkResult() {
+      if (slot1Stopped && slot2Stopped && slot3Stopped) {
+        alert('결과: ' + slot1.textContent + ', ' + slot2.textContent + ', ' + slot3.textContent);
+      }
+    }
+  }
+</script>
+</body>
+</html>
