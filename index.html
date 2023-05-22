@@ -24,49 +24,37 @@
     <button id="stopbtn">Stop</button>
 
     <script>
-      function getRandomNumber() {
-        var sn = 1
-        if (sn > 10) {
-        sn=1
-        }else {
-        sn++;
-        return sn;
-        }
-
-      }
 
       function startSlotMachine() {
         var slot1 = document.getElementById('slot1');
         var slot2 = document.getElementById('slot2');
         var slot3 = document.getElementById('slot3');
 
-        var count = 0;
-    var maxCount = 10; // 몇 번 돌릴지 설정
-    var intervalIds = []; // 각 슬롯의 setInterval ID를 저장하는 배열
+      var count = 0;
+      var maxCount = 10; // 몇 번 돌릴지 설정
+      var intervalIds = []; // 각 슬롯의 setInterval ID를 저장하는 배열
 
-    // 슬롯 멈춤 상태를 나타내는 변수들
-    var slot1Stopped = false;
-    var slot2Stopped = false;
-    var slot3Stopped = false;
+      var slotValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // 슬롯에 표시될 숫자 배열
 
-    // 각 슬롯을 돌리는 함수
-    function spinSlot(slot, stoppedFlag) {
-      if (!stoppedFlag) {
-        slot.textContent = getRandomNumber();
+      // 각 슬롯을 돌리는 함수
+      function spinSlot(slot, index) {
+        slot.textContent = slotValues[index % slotValues.length];
       }
-    }
 
-    // 각 슬롯별로 돌리기 시작
-    intervalIds[0] = setInterval(function() {
-      spinSlot(slot1, slot1Stopped);
-    }, 50);
-    intervalIds[1] = setInterval(function() {
-      spinSlot(slot2, slot2Stopped);
-    }, 50);
-    intervalIds[2] = setInterval(function() {
-      spinSlot(slot3, slot3Stopped);
-    }, 50);
-
+      // 각 슬롯별로 돌리기 시작
+      intervalIds[0] = setInterval(function() {
+        spinSlot(slot1, count);
+        count++;
+      }, 50);
+      intervalIds[1] = setInterval(function() {
+        spinSlot(slot2, count);
+        count++;
+      }, 50);
+      intervalIds[2] = setInterval(function() {
+        spinSlot(slot3, count);
+        count++;
+      }, 50);
+    
     // 슬롯을 멈추는 함수
     function stopSlot(slotIndex) {
       clearInterval(intervalIds[slotIndex]);
