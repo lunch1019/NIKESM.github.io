@@ -67,8 +67,6 @@
       } else if (slotIndex === 2) {
         slot3Stopped = true;
       }
-
-      checkResult();
     }
 
     // 슬롯 멈추기 버튼을 클릭하면 슬롯을 하나씩 멈춤
@@ -78,13 +76,6 @@
       stopSlot(stoped);
       stoped++;
     };
-
-    // 결과를 확인하는 함수
-    function checkResult() {
-      if (slot1Stopped && slot2Stopped && slot3Stopped) {
-        alert('결과: ' + slot1.textContent + ', ' + slot2.textContent + ', ' + slot3.textContent);
-      }
-    }
   }
 </script>
 </body>
