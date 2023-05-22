@@ -25,7 +25,13 @@
 
     <script>
       function getRandomNumber() {
-        return Math.floor(Math.random() * 10) + 1;
+        var sn = 1
+        if (sn > 10) {
+        sn=1
+        }else { 
+        return sn;
+        }
+
       }
 
       function startSlotMachine() {
