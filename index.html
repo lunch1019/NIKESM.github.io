@@ -9,7 +9,7 @@
     <div class="cont">
       <div class="bunny">
         <img id="blanc" src="./resource/c270_00.png">
-        <img id="noir" src="./resource/c271_00.png">   
+        <img id="noir" src="./resource/standing.png">   
       </div>
 
       <div class="slot-container">
@@ -20,7 +20,7 @@
     </div>
 
 
-    <button onclick="startSlotMachine()">Start</button><br>
+    <button id="startbtn" onclick="startSlotMachine()">Start</button><br>
     <button id="stopbtn">Stop</button>
 
     <script>
@@ -45,15 +45,15 @@
       intervalIds[0] = setInterval(function() {
         spinSlot(slot1, count);
         count++;
-      }, 50);
+      }, 70);
       intervalIds[1] = setInterval(function() {
         spinSlot(slot2, count);
         count++;
-      }, 50);
+      }, 70);
       intervalIds[2] = setInterval(function() {
         spinSlot(slot3, count);
         count++;
-      }, 50);
+      }, 70);
     
     // 슬롯을 멈추는 함수
     function stopSlot(slotIndex) {
@@ -67,6 +67,13 @@
       } else if (slotIndex === 2) {
         slot3Stopped = true;
       }
+      if(stoped == 2) {
+        getresult();
+      }
+    }
+    
+    function getresult() {
+      alert("결과:"+slot1.textContent+","+slot2.textContent+","+slot3.textContent) 
     }
 
     // 슬롯 멈추기 버튼을 클릭하면 슬롯을 하나씩 멈춤
@@ -76,6 +83,9 @@
       stopSlot(stoped);
       stoped++;
     };
+    document.getElementById('noir').onmouseover = function() {
+      document.getElementById('noir').src = "./resource/push.png"
+    }
   }
 </script>
 </body>

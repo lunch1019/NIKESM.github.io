@@ -14,6 +14,8 @@ body {
     }
     .slot {
       margin: 0 10px;
+      border: 1px solid;
+      
     }
     .cont {
       width: 1400px;
@@ -34,4 +36,7 @@ body {
       width: 300px;
       height: 504px;
       left: 1070px;
+    }
+    #startbtn {
+      
     }
