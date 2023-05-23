@@ -5,7 +5,7 @@
   <link href="./css/style.css" rel="stylesheet">
 </head>
 <body align="center">
-  <h1><블랑과 누아르가 함께하는 행운의 슬롯머신></h1>
+  <h1><블랑과 누아르가 함께하는 행운의 슬롯머신 히히></h1>
     <div class="cont">
       <div class="bunny">
         <img id="blanc" src="./resource/c270_00.png">
@@ -18,7 +18,6 @@
         <div class="slot" id="slot3"></div>
       </div>
     </div>
-    <button id="stopbtn">Stop</button>
 
     <script>
 
@@ -74,13 +73,14 @@
     
     function getresult() {
       alert("결과:"+slot1.textContent+","+slot2.textContent+","+slot3.textContent)
+      
       document.getElementById('noir').setAttribute('onclick','startSlotMachine()')
     }
 
     // 슬롯 멈추기 버튼을 클릭하면 슬롯을 하나씩 멈춤
     var stoped = 0
     
-    function st() {
+    document.getElementById('noir').onclick = function () {
       stopSlot(stoped);
       stoped++;
     };
