@@ -9,7 +9,7 @@
     <div class="cont">
       <div class="bunny">
         <img id="blanc" src="./resource/c270_00.png">
-        <img id="noir" src="./resource/standing.png">   
+        <img onmouseover="this.src='./resource/push.png'" onmouseout="this.src='./resource/standing.png'" onclick="startSlotMachine();" id="noir" src="./resource/standing.png">   
       </div>
 
       <div class="slot-container">
@@ -18,14 +18,12 @@
         <div class="slot" id="slot3"></div>
       </div>
     </div>
-
-
-    <button id="startbtn" onclick="startSlotMachine()">Start</button><br>
     <button id="stopbtn">Stop</button>
 
     <script>
 
       function startSlotMachine() {
+      document.getElementById('noir').onclick='st()'
         var slot1 = document.getElementById('slot1');
         var slot2 = document.getElementById('slot2');
         var slot3 = document.getElementById('slot3');
@@ -73,19 +71,17 @@
     }
     
     function getresult() {
-      alert("결과:"+slot1.textContent+","+slot2.textContent+","+slot3.textContent) 
+      alert("결과:"+slot1.textContent+","+slot2.textContent+","+slot3.textContent)
+      document.getElementById('noir').onclick='startSlotMachine()'
     }
 
     // 슬롯 멈추기 버튼을 클릭하면 슬롯을 하나씩 멈춤
     var stoped = 0
     
-    document.getElementById('stopbtn').onclick = function() {
+    function st() {
       stopSlot(stoped);
       stoped++;
     };
-    document.getElementById('noir').onmouseover = function() {
-      console.log("d")
-    }
   }
 </script>
 </body>
