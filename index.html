@@ -23,7 +23,9 @@
     <script>
 
       function startSlotMachine() {
-      document.getElementById('noir').onclick='st()'
+        
+        document.getElementById('noir').setAttribute('onclick',"st()")
+        
         var slot1 = document.getElementById('slot1');
         var slot2 = document.getElementById('slot2');
         var slot3 = document.getElementById('slot3');
@@ -72,7 +74,7 @@
     
     function getresult() {
       alert("결과:"+slot1.textContent+","+slot2.textContent+","+slot3.textContent)
-      document.getElementById('noir').onclick='startSlotMachine()'
+      document.getElementById('noir').setAttribute('onclick','startSlotMachine()')
     }
 
     // 슬롯 멈추기 버튼을 클릭하면 슬롯을 하나씩 멈춤
