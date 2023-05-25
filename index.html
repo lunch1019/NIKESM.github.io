@@ -72,7 +72,16 @@
     }
     
     function getresult() {
-      alert("결과:"+slot1.textContent+","+slot2.textContent+","+slot3.textContent)
+
+      var ressult = parseInt(slot1.textContent)+parseInt(slot2.textContent)+parseInt(slot3.textContent) 
+      
+      if (ressult > 21) {
+      alert("탈락") 
+      } else if(ressult < 21) {
+      alert(ressult)
+      } else {
+      alert("와우! 대단하시네요!")
+      }
       
       document.getElementById('noir').setAttribute('onclick','startSlotMachine()')
     }
