@@ -5,7 +5,7 @@
   <link href="./css/style.css" rel="stylesheet">
 </head>
 <body align="center">
-  <h1><블랑과 누아르가 함께하는 행운의 슬롯머신 히히></h1>
+  <h1><블랑과 누아르가 함께하는 행운의 슬롯머신></h1>
     <div class="cont">
       <div class="bunny">
         <img id="blanc" src="./resource/c270_00.png">
@@ -79,7 +79,11 @@
       alert("탈락") 
       } else if(ressult < 21) {
       alert(ressult)
-      } else {
+      } else if(ressult == 21 && parseInt(slot1.textContent) == 7 && parseInt(slot2.textContent)==7 && parseInt(slot3.textContent) == 7)
+      {
+      alert("행운의 777!")
+      }
+      else {
       alert("와우! 대단하시네요!")
       }
       
